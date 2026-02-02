@@ -1,0 +1,97 @@
+﻿<Window x:Class="GlobusTravelManager.Views.GuestToursWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="GlobeTravelManager - Гостевой режим" 
+        Height="650" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#F8FAFC">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0" 
+                Background="#1E40AF" 
+                Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="🌍 GlobusTravelManager" 
+                               FontSize="24" 
+                               FontWeight="Bold" 
+                               Foreground="White"/>
+                    <TextBlock Text=" (Гостевой режим)" 
+                               FontSize="18" 
+                               Foreground="#E2E8F0" 
+                               Margin="10,0,0,0" 
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <Button x:Name="BtnLogin" 
+                        Grid.Column="1"
+                        Content="🔐 Войти в систему" 
+                        Width="150" 
+                        Height="35" 
+                        Background="#10B981" 
+                        Foreground="White" 
+                        BorderBrush="#047857"
+                        FontWeight="Bold"
+                        Cursor="Hand"
+                        Click="BtnLogin_Click"/>
+            </Grid>
+        </Border>
+
+        <!-- Список туров -->
+        <DataGrid Grid.Row="1" 
+                  x:Name="dgTours" 
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False" 
+                  Background="White" 
+                  BorderBrush="#CBD5E1" 
+                  RowBackground="#F8FAFC" 
+                  AlternatingRowBackground="#F1F5F9"
+                  SelectionMode="Single"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" 
+                                    Binding="{Binding Name}" 
+                                    Width="*"/>
+                <DataGridTextColumn Header="Страна" 
+                                    Binding="{Binding CountryName}" 
+                                    Width="120"/>
+                <DataGridTextColumn Header="Описание" 
+                                    Binding="{Binding Description}" 
+                                    Width="2*"/>
+                <DataGridTextColumn Header="Дата начала" 
+                                    Binding="{Binding StartDate, StringFormat={}{0:dd.MM.yyyy}}" 
+                                    Width="100"/>
+                <DataGridTextColumn Header="Длительность" 
+                                    Binding="{Binding DurationDays}" 
+                                    Width="100"/>
+                <DataGridTextColumn Header="Цена" 
+                                    Binding="{Binding Price, StringFormat={}{0:N0} ₽}" 
+                                    Width="100"/>
+                <DataGridTextColumn Header="Свободные места" 
+                                    Binding="{Binding AvailableSeats}" 
+                                    Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Статус -->
+        <Border Grid.Row="2" 
+                Background="#F1F5F9" 
+                Padding="10">
+            <TextBlock x:Name="tbStatus" 
+                       Foreground="#475569"
+                       HorizontalAlignment="Center"/>
+        </Border>
+    </Grid>
+</Window>

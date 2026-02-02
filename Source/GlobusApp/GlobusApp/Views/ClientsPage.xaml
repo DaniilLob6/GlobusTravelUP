@@ -1,0 +1,114 @@
+﻿<Page x:Class="GlobusTravelManager.Views.ClientsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Клиенты" 
+      Background="#F8FAFC">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель управления -->
+        <Border Grid.Row="0" 
+                Background="#EFF6FF" 
+                Padding="15" 
+                Margin="0,0,0,10">
+            <StackPanel>
+                <TextBlock Text="Управление клиентами" 
+                           FontSize="18" 
+                           FontWeight="Bold" 
+                           Foreground="#1E3A8A" 
+                           Margin="0,0,0,10"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="BtnEdit" 
+                            Content="✏️ Редактировать" 
+                            Width="140" 
+                            Height="35" 
+                            Margin="0,0,10,0" 
+                            Background="#FBBF24" 
+                            BorderBrush="#D97706"
+                            FontWeight="Bold"
+                            Cursor="Hand"
+                            Click="BtnEdit_Click"/>
+                    <Button x:Name="BtnDelete" 
+                            Content="🗑️ Удалить" 
+                            Width="140" 
+                            Height="35" 
+                            Margin="10,0" 
+                            Background="#EF4444" 
+                            Foreground="White" 
+                            BorderBrush="#DC2626"
+                            FontWeight="Bold"
+                            Cursor="Hand"
+                            Click="BtnDelete_Click"/>
+                    <Button x:Name="BtnRefresh" 
+                            Content="🔄 Обновить" 
+                            Width="120" 
+                            Height="35" 
+                            Margin="10,0" 
+                            Background="#3B82F6" 
+                            Foreground="White" 
+                            BorderBrush="#1D4ED8"
+                            FontWeight="Bold"
+                            Cursor="Hand"
+                            Click="BtnRefresh_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Список клиентов -->
+        <DataGrid Grid.Row="1" 
+                  x:Name="dgClients" 
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False" 
+                  Background="White" 
+                  BorderBrush="#CBD5E1" 
+                  RowBackground="#F8FAFC" 
+                  AlternatingRowBackground="#F1F5F9"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО" 
+                                    Binding="{Binding FullName}" 
+                                    Width="*"/>
+                <DataGridTextColumn Header="Логин" 
+                                    Binding="{Binding Login}" 
+                                    Width="*"/>
+                <DataGridTextColumn Header="Роль" 
+                                    Binding="{Binding Role}" 
+                                    Width="120"/>
+                <DataGridTextColumn Header="Заявок" 
+                                    Binding="{Binding BookingCount}" 
+                                    Width="80"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Статистика -->
+        <Border Grid.Row="2" 
+                Background="#F1F5F9" 
+                Padding="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Всего клиентов: " 
+                           Foreground="#475569" 
+                           FontWeight="Bold"/>
+                <TextBlock x:Name="tbClientCount" 
+                           Text="0" 
+                           Foreground="#1E40AF" 
+                           FontWeight="Bold" 
+                           Margin="5,0,20,0"/>
+
+                <TextBlock Text="Всего заявок: " 
+                           Foreground="#475569" 
+                           FontWeight="Bold"/>
+                <TextBlock x:Name="tbTotalBookings" 
+                           Text="0" 
+                           Foreground="#10B981" 
+                           FontWeight="Bold" 
+                           Margin="5,0,0,0"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

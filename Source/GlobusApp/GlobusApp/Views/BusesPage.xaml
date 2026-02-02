@@ -1,0 +1,125 @@
+﻿<Page x:Class="GlobusTravelManager.Views.BusesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Автобусы" 
+      Background="#F8FAFC">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель управления -->
+        <Border Grid.Row="0" 
+                Background="#EFF6FF" 
+                Padding="15" 
+                Margin="0,0,0,10">
+            <StackPanel>
+                <TextBlock Text="Управление типами автобусов" 
+                           FontSize="18" 
+                           FontWeight="Bold" 
+                           Foreground="#1E3A8A" 
+                           Margin="0,0,0,10"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="BtnAdd" 
+                            Content="+ Добавить" 
+                            Width="140" 
+                            Height="35" 
+                            Margin="0,0,10,0" 
+                            Background="#10B981" 
+                            Foreground="White" 
+                            BorderBrush="#047857"
+                            FontWeight="Bold"
+                            Cursor="Hand"
+                            Click="BtnAdd_Click"/>
+                    <Button x:Name="BtnEdit" 
+                            Content="✏️ Редактировать" 
+                            Width="140" 
+                            Height="35" 
+                            Margin="10,0" 
+                            Background="#FBBF24" 
+                            BorderBrush="#D97706"
+                            FontWeight="Bold"
+                            Cursor="Hand"
+                            Click="BtnEdit_Click"/>
+                    <Button x:Name="BtnDelete" 
+                            Content="🗑️ Удалить" 
+                            Width="140" 
+                            Height="35" 
+                            Margin="10,0" 
+                            Background="#EF4444" 
+                            Foreground="White" 
+                            BorderBrush="#DC2626"
+                            FontWeight="Bold"
+                            Cursor="Hand"
+                            Click="BtnDelete_Click"/>
+                    <Button x:Name="BtnRefresh" 
+                            Content="🔄 Обновить" 
+                            Width="120" 
+                            Height="35" 
+                            Margin="10,0" 
+                            Background="#3B82F6" 
+                            Foreground="White" 
+                            BorderBrush="#1D4ED8"
+                            FontWeight="Bold"
+                            Cursor="Hand"
+                            Click="BtnRefresh_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Список автобусов -->
+        <DataGrid Grid.Row="1" 
+                  x:Name="dgBuses" 
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False" 
+                  Background="White" 
+                  BorderBrush="#CBD5E1" 
+                  RowBackground="#F8FAFC" 
+                  AlternatingRowBackground="#F1F5F9"
+                  SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" 
+                                    Binding="{Binding Name}" 
+                                    Width="*"/>
+                <DataGridTextColumn Header="Описание" 
+                                    Binding="{Binding Description}" 
+                                    Width="2*"/>
+                <DataGridTextColumn Header="Вместимость" 
+                                    Binding="{Binding Capacity}" 
+                                    Width="100"/>
+                <DataGridTextColumn Header="Использований" 
+                                    Binding="{Binding UsageCount}" 
+                                    Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Статистика -->
+        <Border Grid.Row="2" 
+                Background="#F1F5F9" 
+                Padding="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Всего типов автобусов: " 
+                           Foreground="#475569" 
+                           FontWeight="Bold"/>
+                <TextBlock x:Name="tbBusCount" 
+                           Text="0" 
+                           Foreground="#1E40AF" 
+                           FontWeight="Bold" 
+                           Margin="5,0,20,0"/>
+
+                <TextBlock Text="Общая вместимость: " 
+                           Foreground="#475569" 
+                           FontWeight="Bold"/>
+                <TextBlock x:Name="tbTotalCapacity" 
+                           Text="0" 
+                           Foreground="#10B981" 
+                           FontWeight="Bold" 
+                           Margin="5,0,0,0"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

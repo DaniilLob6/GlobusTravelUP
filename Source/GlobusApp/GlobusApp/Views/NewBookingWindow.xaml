@@ -1,0 +1,151 @@
+﻿<Window x:Class="GlobusTravelManager.Views.NewBookingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Новое бронирование" 
+        Height="550" Width="600"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#F8FAFC">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" 
+                   Text="Новое бронирование" 
+                   FontSize="20" FontWeight="Bold" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,0,0,20" 
+                   Foreground="#1E3A8A"/>
+
+        <!-- Клиент -->
+        <StackPanel Grid.Row="1" Margin="0,0,0,10">
+            <TextBlock Text="Клиент:" 
+                       FontWeight="SemiBold"
+                       Foreground="#1E3A8A" 
+                       Margin="0,0,0,5"/>
+            <ComboBox x:Name="cmbClient" 
+                      Height="35" 
+                      Padding="8"
+                      SelectionChanged="CmbTour_SelectionChanged"/>
+        </StackPanel>
+
+        <!-- Тур -->
+        <StackPanel Grid.Row="2" Margin="0,0,0,10">
+            <TextBlock Text="Тур:" 
+                       FontWeight="SemiBold"
+                       Foreground="#1E3A8A" 
+                       Margin="0,0,0,5"/>
+            <ComboBox x:Name="cmbTour" 
+                      Height="35" 
+                      Padding="8"
+                      SelectionChanged="CmbTour_SelectionChanged"/>
+        </StackPanel>
+
+        <!-- Информация о туре -->
+        <Border Grid.Row="3" 
+                x:Name="tourInfoPanel" 
+                Background="#F0F9FF" 
+                BorderBrush="#BAE6FD" 
+                BorderThickness="1" 
+                Padding="10" 
+                Margin="0,0,0,10"
+                Visibility="Collapsed">
+            <StackPanel>
+                <TextBlock x:Name="tbTourInfo" 
+                           TextWrapping="Wrap"/>
+                <TextBlock x:Name="tbTourSeats" 
+                           FontWeight="Bold" 
+                           Margin="0,5,0,0"
+                           Foreground="#1E40AF"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Количество человек -->
+        <StackPanel Grid.Row="4" Margin="0,0,0,10">
+            <TextBlock Text="Количество человек:" 
+                       FontWeight="SemiBold"
+                       Foreground="#1E3A8A" 
+                       Margin="0,0,0,5"/>
+            <TextBox x:Name="txtPeopleCount" 
+                     Height="35" 
+                     Padding="8"
+                     TextChanged="TxtPeopleCount_TextChanged"/>
+        </StackPanel>
+
+        <!-- Общая стоимость -->
+        <StackPanel Grid.Row="5" Margin="0,0,0,10">
+            <TextBlock Text="Общая стоимость:" 
+                       FontWeight="SemiBold"
+                       Foreground="#1E3A8A" 
+                       Margin="0,0,0,5"/>
+            <TextBlock x:Name="tbTotalPrice" 
+                       FontSize="16" 
+                       FontWeight="Bold" 
+                       Foreground="#10B981"/>
+        </StackPanel>
+
+        <!-- Комментарий -->
+        <StackPanel Grid.Row="6" Margin="0,0,0,10">
+            <TextBlock Text="Комментарий (необязательно):" 
+                       FontWeight="SemiBold"
+                       Foreground="#1E3A8A" 
+                       Margin="0,0,0,5"/>
+            <TextBox x:Name="txtComment" 
+                     Height="80" 
+                     Padding="8"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+
+        <!-- Сообщение об ошибке -->
+        <TextBlock Grid.Row="7" 
+                   x:Name="ErrorMessageTextBlock" 
+                   Foreground="#DC2626" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,0,0,10" 
+                   TextWrapping="Wrap"
+                   FontSize="12"/>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="9" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,20">
+            <Button x:Name="BtnCreate" 
+                    Content="Создать заявку" 
+                    Width="140" 
+                    Height="40" 
+                    Margin="10,0" 
+                    Background="#10B981" 
+                    Foreground="White" 
+                    BorderBrush="#047857" 
+                    FontWeight="Bold"
+                    Cursor="Hand"
+                    Click="BtnCreate_Click"/>
+            <Button x:Name="BtnCancel" 
+                    Content="Отмена" 
+                    Width="140" 
+                    Height="40" 
+                    Margin="10,0" 
+                    Background="#94A3B8" 
+                    Foreground="White" 
+                    BorderBrush="#64748B" 
+                    FontWeight="Bold"
+                    Cursor="Hand"
+                    Click="BtnCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
